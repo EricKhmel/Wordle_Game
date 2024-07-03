@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WordGuesser.MainPage"
+             Title="Word Guesser"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <HorizontalStackLayout HorizontalOptions="Center">
+            <Label Text="Number of Letters:" VerticalOptions="Center" Margin="0,0,7,0" FontAttributes="Bold"/>
+            <Picker x:Name="columnsPicker" SelectedIndexChanged="OnPickerSelectedIndexChanged" Grid.Row="0" WidthRequest="64">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:Int32}">
+                        <x:Int32>3</x:Int32>
+                        <x:Int32>4</x:Int32>
+                        <x:Int32>5</x:Int32>
+                        <x:Int32>6</x:Int32>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+        </HorizontalStackLayout>
+        <Entry x:Name="wordEntry" Placeholder="Enter Your Guess Here" Completed="OnEntryCompleted" Grid.Row="1" WidthRequest="170" Margin="0,5,0,0"/>
+
+        <Grid x:Name="guessGrid" Margin="0,5,0,0" HorizontalOptions="Center" Grid.Row="2">
+        </Grid>
+
+        <Label x:Name="correctWordLabel" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" TextColor="Red" Grid.Row="3" FontAttributes="Bold"/>
+        <Button x:Name="resetButton" Text="Reset" Clicked="OnResetButtonClicked" Grid.Row="4" WidthRequest="72" HeightRequest="35" FontSize="11" FontAttributes="Bold" MinimumHeightRequest="0" MinimumWidthRequest="0"/>
+        <HorizontalStackLayout Grid.Row="5" HorizontalOptions="Center" Spacing="10" Margin="0,3,0,3">
+            <Button Text="History" Clicked="OnHistoryButtonClicked" WidthRequest="72" HeightRequest="35" FontSize="11" FontAttributes="Bold" MinimumHeightRequest="0" MinimumWidthRequest="0"/>
+            <Button Text="Settings" Clicked="OnSettingsButtonClicked" WidthRequest="72" HeightRequest="35" FontSize="11" FontAttributes="Bold" MinimumHeightRequest="0" MinimumWidthRequest="0"/>
+        </HorizontalStackLayout>
+    </Grid>
+
+</ContentPage>
